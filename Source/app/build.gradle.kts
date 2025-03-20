@@ -41,5 +41,4 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     implementation("com.karumi:dexter:6.2.3")
-    implementation("com.gauravk.audiovisualizer:audiovisualizer:0.9.2")
 }

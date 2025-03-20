@@ -18,7 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.gauravk.audiovisualizer.visualizer.BarVisualizer;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.io.File;
@@ -37,16 +36,8 @@ public class PlayerActivity extends AppCompatActivity {
     ArrayList<File> mySongs;
     Thread updateSeekBar;
 
-    BarVisualizer barVisualizer;
 
-    @Override
-    protected void onDestroy() {
-        if(barVisualizer != null)
-        {
-            barVisualizer.release();
-        }
-        super.onDestroy();
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +58,6 @@ public class PlayerActivity extends AppCompatActivity {
         txtEnd = findViewById(R.id.textview_end);
         seekMusic = findViewById(R.id.seekbar_player);
         imgViewPlayer = findViewById(R.id.imageview_player);
-        barVisualizer = findViewById(R.id.visualizer);
 
         if (mediaPlayer != null) {
             mediaPlayer.stop();
@@ -199,11 +189,6 @@ public class PlayerActivity extends AppCompatActivity {
             }
         });
 
-        int audiosessionId = mediaPlayer.getAudioSessionId();
-        if (audiosessionId != -1)
-        {
-            barVisualizer.setAudioSessionId(audiosessionId);
-        }
 
         btnPrevious.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -226,11 +211,6 @@ public class PlayerActivity extends AppCompatActivity {
 
                 startAnimation(imgViewPlayer);
 
-                int audiosessionId = mediaPlayer.getAudioSessionId();
-                if (audiosessionId != -1)
-                {
-                    barVisualizer.setAudioSessionId(audiosessionId);
-                }
 
                 mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
@@ -272,11 +252,6 @@ public class PlayerActivity extends AppCompatActivity {
 
                 startAnimation(imgViewPlayer);
 
-                int audiosessionId = mediaPlayer.getAudioSessionId();
-                if (audiosessionId != -1)
-                {
-                    barVisualizer.setAudioSessionId(audiosessionId);
-                }
 
                 mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
